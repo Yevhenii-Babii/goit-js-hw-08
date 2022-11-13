@@ -1,7 +1,9 @@
+
 const form = document.querySelector('.feedback-form');
+console.log(form);
 
 
-form.addEventListener('input', throttle(onFormData, 500));
+form.addEventListener('input', onFormData);
 form.addEventListener('submit', onSubmitForm);
 
 const formData = {};
