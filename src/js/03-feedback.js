@@ -11,30 +11,25 @@ let formData = {};
 
 
 function onFormData(event) {
-  const name = event.target.name
-  const value = event.target.value;
   
-  formData = {
-    ...formData,
-    [name]: value,
-  }
-console.log(formData);
+   formData[event.target.name] = event.target.value;
   localStorage.setItem('feedback-form-state', JSON.stringify(formData));
   
 }
 
 
 function onSubmitForm(event) {
-  JSON.parse(localStorage.getItem('feedback-form-state'));
   event.preventDefault();
   event.target.reset();
+  console.log(formData);
   localStorage.removeItem('feedback-form-state');
+  
 
    formData = {}
 }
 
 function onInputSettings () {
-  const savedMessage = JSON.parse(localStorage.getItem('feedback-form-state') ?? {} );
+  const savedMessage = JSON.parse(localStorage.getItem('feedback-form-state')) ?? {} ;
 
   for (const prop in savedMessage ) {
     if(savedMessage.hasOwnProperty(prop)) {
